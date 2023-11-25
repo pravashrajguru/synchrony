@@ -19,7 +19,7 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
     - name: docker login
       run:
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        docker login -u DOCKER_USERNAME -p $DOCKER_PASSWORD
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag usernamagement-learning:$(date +%s)
