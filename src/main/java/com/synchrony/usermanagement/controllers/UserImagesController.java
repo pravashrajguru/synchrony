@@ -36,7 +36,4 @@ public class UserImagesController {
         return ResponseEntity.noContent().build();
     }
 
-
-
-
 }

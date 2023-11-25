@@ -1,7 +1,7 @@
 
 package com.synchrony.usermanagement.service;
 
-import com.synchrony.usermanagement.config.ImgurApiConfig;
+import com.synchrony.usermanagement.config.SynchronyAppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.Base64;
 @Service
 public class ImgurApiService {
     @Autowired
-    ImgurApiConfig config;
+    SynchronyAppConfig config;
     @Autowired
     HttpClient httpClient;
 

@@ -12,11 +12,13 @@ import java.net.http.HttpClient;
 @Getter
 @Configuration
 @PropertySource("classpath:application.properties")
-public class ImgurApiConfig {
+public class SynchronyAppConfig {
     @Value("${imgur.api.url}")
     public String imgurapi;
     @Value("${imgur.api.clientid}")
     String clientId;
+    @Value("${image.upload.path}")
+    String uploadPath;
 
     @Qualifier("httpClient")
     @Bean

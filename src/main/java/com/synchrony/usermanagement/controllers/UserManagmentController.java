@@ -1,6 +1,7 @@
 package com.synchrony.usermanagement.controllers;
 
 
+import com.synchrony.usermanagement.config.SynchronyAppConfig;
 import com.synchrony.usermanagement.models.UserDto;
 import com.synchrony.usermanagement.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +26,11 @@ import java.util.Optional;
 @Controller
 @Slf4j
 public class UserManagmentController {
-    private static String UPLOAD_DIRECTORY = System.getProperty("user.dir") ;
+
     @Autowired
     private UserService userService;
+    @Autowired
+    SynchronyAppConfig config;
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -74,19 +77,13 @@ public class UserManagmentController {
     public String uploadImage(Authentication authentication,Model model, @RequestParam("image") MultipartFile file) throws Exception {
         StringBuilder fileNames = new StringBuilder();
         fileNames.append(file.getOriginalFilename());
-        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY,"target", file.getOriginalFilename());
-        Files.write(fileNameAndPath, file.getBytes());
+        Path fileNameAndPath = Paths.get(config.getUploadPath(),"upload", file.getOriginalFilename());
+        Path uploadedFilePath = Files.write(fileNameAndPath, file.getBytes());
+        log.info("File Written successfully to local disk before uploading...{}",uploadedFilePath.toUri());
         UserDto userDto = userService.upload(authentication.getName(), fileNames.toString(),file);
         model.addAttribute("user", userDto);
         log.info("Upload successful ,rendering profile page");
         return "profile";
     }
-/*    @GetMapping("/authorized/")
-    public String redirectUrlServiceForAccessToken(@PathVariable("access_token") String accesstoken) {
-
-        String  recievedToken = accesstoken;
-        return "profile";
-    }*/
-
 
 }
