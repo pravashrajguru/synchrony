@@ -21,7 +21,7 @@ jobs:
       run:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag usernamagement-learning:$(date +%s)
+      run: docker build . --file Dockerfile --tag  rajguru-repo/usernamagement-learning:$(date +%s)
 
     - name: docker push to upload the image to docker hub
       run: docker push rajguru-repo/usernamagement-learning:$(date +%s)
