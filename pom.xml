@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.synchrony</groupId>
-	<artifactId>usermanagement</artifactId>
+	<artifactId>synchrony-learning</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>usermanagement</name>
 	<description>Test Project for Synchrony</description>
