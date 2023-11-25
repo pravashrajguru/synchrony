@@ -22,6 +22,6 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
       run: |
-       docker build . --file Dockerfile --tag  rajguru-repo/usernamagement-learning:$(date +%s)
-       docker push rajguru-repo/usernamagement-learning:$(date +%s)
+       docker build . --file Dockerfile --tag  pravashrajguru/usernamagement-learning:$(date +%s)
+       docker push pravashrajguru/usernamagement-learning:$(date +%s)
 
