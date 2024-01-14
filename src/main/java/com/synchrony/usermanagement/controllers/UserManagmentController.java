@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -77,7 +78,7 @@ public class UserManagmentController {
     public String uploadImage(Authentication authentication,Model model, @RequestParam("image") MultipartFile file) throws Exception {
         StringBuilder fileNames = new StringBuilder();
         fileNames.append(file.getOriginalFilename());
-        Path fileNameAndPath = Paths.get(config.getUploadPath(),"upload", file.getOriginalFilename());
+        Path fileNameAndPath = Paths.get(new File(".").getAbsolutePath(),"upload");
         Path uploadedFilePath = Files.write(fileNameAndPath, file.getBytes());
         log.info("File Written successfully to local disk before uploading...{}",uploadedFilePath.toUri());
         UserDto userDto = userService.upload(authentication.getName(), fileNames.toString(),file);
