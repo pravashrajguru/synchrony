@@ -14,7 +14,7 @@
 	<name>usermanagement</name>
 	<description>Test Project for Synchrony</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>1.11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
