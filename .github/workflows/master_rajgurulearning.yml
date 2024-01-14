@@ -46,8 +46,3 @@ jobs:
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'rajgurulearning'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DF3A0DF33F38402E83D01ED9F789C62F }}
-          package: '*.jar'
